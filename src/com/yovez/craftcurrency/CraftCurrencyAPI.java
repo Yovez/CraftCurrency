@@ -39,7 +39,21 @@ public class CraftCurrencyAPI {
 	public double getPlayerBalance() {
 		return craftConfig.get().getDouble("balance", 0.0);
 	}
-	
-	
+
+	public void setPlayerBalance(double balance) {
+		craftConfig.get().set("balance", balance);
+	}
+
+	public void deposit(double amount) {
+		setPlayerBalance(getPlayerBalance() + amount);
+	}
+
+	public void withdraw(double amount) {
+		setPlayerBalance(getPlayerBalance() - amount);
+
+		/* Disallows balance to go below 0 */
+		if (getPlayerBalance() < 0)
+			setPlayerBalance(0);
+	}
 
 }
