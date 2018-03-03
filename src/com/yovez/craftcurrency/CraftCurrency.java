@@ -15,9 +15,9 @@ public class CraftCurrency extends JavaPlugin {
 		saveDefaultConfig();
 	}
 
-	public CraftCurrency(UUID playerUUID) {
-		setPlayer(getServer().getOfflinePlayer(playerUUID));
-		setCraftConfig(new CraftConfig(playerUUID.toString()));
+	public CraftCurrency(UUID uuid) {
+		setPlayer(getServer().getOfflinePlayer(uuid));
+		setCraftConfig(new CraftConfig(uuid.toString()));
 	}
 
 	public CraftCurrency(OfflinePlayer player) {
@@ -41,6 +41,22 @@ public class CraftCurrency extends JavaPlugin {
 		this.craftConfig = craftConfig;
 	}
 
+	public void createAccount() {
+		setPlayerBalance(0);
+	}
+
+	public static void createAccount(UUID uuid) {
+		CraftConfig config = new CraftConfig(uuid.toString());
+		config.get().set("balance", 0.0);
+		config.saveConfig();
+	}
+
+	public static void createAccount(OfflinePlayer player) {
+		CraftConfig config = new CraftConfig(player.getUniqueId().toString());
+		config.get().set("balance", 0.0);
+		config.saveConfig();
+	}
+
 	public double getPlayerBalance() {
 		return craftConfig.get().getDouble("balance", 0.0);
 	}
@@ -51,6 +67,8 @@ public class CraftCurrency extends JavaPlugin {
 		if (!getConfig().getBoolean("allow_debt", false))
 			if (getPlayerBalance() < 0)
 				setPlayerBalance(0);
+
+		craftConfig.saveConfig();
 	}
 
 	public void deposit(double amount) {
