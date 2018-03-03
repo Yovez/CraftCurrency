@@ -1,9 +1,1 @@
-# MySQL is NOT complete, enabling MySQL will do NOTHING.
-mysql:
-    enabled: false
-    address: 127.0.0.1
-    port: 3306
-    user: root
-    password: password
-    database: CraftCurrency
 debug: false

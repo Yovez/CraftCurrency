@@ -6,7 +6,6 @@ public class CraftCurrency extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		getConfig().options().copyDefaults();
 		saveDefaultConfig();
 	}
 

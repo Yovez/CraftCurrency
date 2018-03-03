@@ -1,30 +1,30 @@
 package com.yovez.craftcurrency;
 
-import org.bukkit.entity.Player;
+import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 
 public class CraftCurrencyAPI {
 
-	private Player player;
+	private OfflinePlayer player;
 	private CraftConfig craftConfig;
 
-	public CraftCurrencyAPI() {
-
+	public CraftCurrencyAPI(UUID playerUUID) {
+		setPlayer(Bukkit.getServer().getOfflinePlayer(playerUUID));
+		setCraftConfig(new CraftConfig(playerUUID.toString()));
 	}
 
-	public CraftCurrencyAPI(Player player) {
-		this.setPlayer(player);
+	public CraftCurrencyAPI(OfflinePlayer player) {
+		setPlayer(player);
 		setCraftConfig(new CraftConfig(player.getUniqueId().toString()));
 	}
 
-	public CraftCurrencyAPI(CraftConfig craftConfig) {
-		setCraftConfig(craftConfig);
-	}
-
-	public Player getPlayer() {
+	public OfflinePlayer getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(Player player) {
+	public void setPlayer(OfflinePlayer player) {
 		this.player = player;
 	}
 
