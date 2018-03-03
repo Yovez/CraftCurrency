@@ -1,6 +1,6 @@
 name: CraftCurrency
 main: com.yovez.craftcurrency.CraftCurrency
-version: 0.0.3
+version: 0.0.4
 author: Yovez
 load: STARTUP
 website: https://github.com/Yovez/CraftCurrency
