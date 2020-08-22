@@ -1,2 +1,9 @@
+currency:
+    primary:
+        singular: "dollar"
+        plural: "dollars"
+    secondary:
+        singular: "coin"
+        plural: "coins"
 debug: false
 allow_debt: false
